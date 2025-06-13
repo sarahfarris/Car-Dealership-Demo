@@ -57,10 +57,10 @@ import java.util.List;
             return matchingVehicles;
         }
 
-        public List<Vehicle> getVehiclesByMakeModel(String make, String model) {
+        public List<Vehicle> getVehiclesByMakeModel(String makeAndModel) {
             List<Vehicle> matchingVehicles = new ArrayList<>();
             for(Vehicle vehicle : inventory) {
-                if(vehicle.getMake().equalsIgnoreCase(make) && vehicle.getModel().equalsIgnoreCase(model)) {
+                if(vehicle.getMakeAndModel().equalsIgnoreCase(makeAndModel)) {
                     matchingVehicles.add(vehicle);
                 }
             }
@@ -77,15 +77,6 @@ import java.util.List;
             return matchingVehicles;
         }
 
-        public List<Vehicle> getVehiclesByColor(String color) {
-            List<Vehicle> matchingVehicles = new ArrayList<>();
-            for(Vehicle vehicle : inventory) {
-                if(vehicle.getColor().equalsIgnoreCase(color)) {
-                    matchingVehicles.add(vehicle);
-                }
-            }
-            return matchingVehicles;
-        }
 
         public List<Vehicle> getVehiclesByMileage(double min, double max) {
             List<Vehicle> matchingVehicles = new ArrayList<>();
@@ -97,15 +88,6 @@ import java.util.List;
             return matchingVehicles;
         }
 
-        public List<Vehicle> getVehiclesByType(String type) {
-            List<Vehicle> matchingVehicles = new ArrayList<>();
-            for(Vehicle vehicle : inventory) {
-                if(vehicle.getVehicleType().equalsIgnoreCase(type)) {
-                    matchingVehicles.add(vehicle);
-                }
-            }
-            return matchingVehicles;
-        }
 
         public List<Vehicle> getAllVehicles() {
             return inventory;
@@ -116,8 +98,8 @@ import java.util.List;
             DealershipFileManager.saveDealership(this);
         }
 
-        public void removeVehicle(Vehicle vehicle) {
-            inventory.remove(vehicle);
+        public void removeVehicle(String vin) {
+            inventory.remove(vin);
             DealershipFileManager.saveDealership(this);
         }
 

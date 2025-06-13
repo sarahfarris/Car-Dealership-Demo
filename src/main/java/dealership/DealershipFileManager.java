@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class DealershipFileManager {
   public static String fileLocation =
-      "C:\\pluralsight\\workshops\\CarDealershipWorkshop\\src\\main\\java\\dealership\\CSV_File";
+      "//C:\\pluralsight\\workshops\\CarDealershipWorkshop\\src\\main\\java\\dealership\\CSV_File\\inventory.csv";
 
     public static Dealership getDealerShip() {
         Dealership dealership = null;
@@ -19,8 +19,7 @@ public class DealershipFileManager {
             String line;
             while((line = bufferedReader.readLine()) != null) {
                 String[] vehicleString = line.split("\\|");
-                Vehicle vehicle = new Vehicle(vehicleString[0], Integer.parseInt(vehicleString[1]), vehicleString[2], vehicleString[3], vehicleString[4], vehicleString[5], Integer.parseInt(vehicleString[6]), Double.parseDouble(vehicleString[7]));
-                dealership.getInventory().add(vehicle);
+                Vehicle vehicle = new Vehicle(vehicleString[0], vehicleString[1], Integer.parseInt(vehicleString[2]), Double.parseDouble(vehicleString[3]), Boolean.parseBoolean(vehicleString[4]), Integer.parseInt(vehicleString[5]), Double.parseDouble(vehicleString[6]));
             }
 
         } catch(IOException e) {

@@ -6,20 +6,16 @@ public class Vehicle {
 
     private String vin;
     private int year;
-    private String make;
-    private String model;
-    private String vehicleType;
-    private String color;
-    private int odometer;
+    private String makeAndModel;
+    private double odometer;
+    boolean sold;
+    int dealershipID;
     private double price;
 
-    public Vehicle(String vin, int year, String make, String model, String vehicleType, String color, int odometer, double price) {
+    public Vehicle(String vin, String makeAndModel, int year,  double odometer, boolean sold, int dealershipId, double price) {
         this.vin = vin;
         this.year = year;
-        this.make = make;
-        this.model = model;
-        this.vehicleType = vehicleType;
-        this.color = color;
+        this.makeAndModel = makeAndModel;
         this.odometer = odometer;
         this.price = price;
     }
@@ -40,43 +36,35 @@ public class Vehicle {
         this.year = year;
     }
 
-    public String getMake() {
-        return make;
+    public String getMakeAndModel() {
+        return makeAndModel;
     }
 
-    public void setMake(String make) {
-        this.make = make;
+    public void setMakeAndModel(String makeAndModel) {
+        this.makeAndModel = makeAndModel;
     }
 
-    public String getModel() {
-        return model;
+    public boolean isSold() {
+        return sold;
     }
 
-    public void setModel(String model) {
-        this.model = model;
+    public void setSold(boolean sold) {
+        this.sold = sold;
     }
 
-    public String getVehicleType() {
-        return vehicleType;
+    public int getDealershipID() {
+        return dealershipID;
     }
 
-    public void setVehicleType(String vehicleType) {
-        this.vehicleType = vehicleType;
+    public void setDealershipID(int dealershipID) {
+        this.dealershipID = dealershipID;
     }
 
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    public int getOdometer() {
+    public double getOdometer() {
         return odometer;
     }
 
-    public void setOdometer(int odometer) {
+    public void setOdometer(double odometer) {
         this.odometer = odometer;
     }
 
@@ -89,7 +77,7 @@ public class Vehicle {
     }
 
     public String toFileString() {
-        return vin + "|" + year + "|" + make + "|" + model + "|" + vehicleType + "|" + color + "|" + odometer + "|" + price;
+        return vin + "|" + year + "|" + makeAndModel + "|" + odometer + "|" + price;
     }
 
     @Override
