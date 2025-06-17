@@ -1,5 +1,9 @@
 package dealership;
 
+import dealership.DAO.DealershipDAO;
+import dealership.DAO.SalesContractDAO;
+import dealership.DAO.VehicleDAO;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -9,12 +13,12 @@ public class UserInterface {
 
   public UserInterface() {}
 
-  private void init() {
-    this.dealership = DealershipFileManager.getDealerShip();
-  }
+//  private void init() {
+//    this.dealership = DealershipFileManager.getDealerShip();
+//  }
 
   public void display() {
-    init();
+//    init();
     boolean keepGoing = true;
     while (keepGoing) {
       displayMenu();
@@ -30,10 +34,13 @@ public class UserInterface {
                 1 - Find vehicles within a price range
                 2 - Find vehicles by make / model
                 3 - Find vehicles by year range
+                4 - Find vehicles by VIN
                 5 - Find vehicles by mileage range
+                6 - List ALL sales contracts
                 7 - List ALL vehicles
                 8 - Add a vehicle
                 9 - Remove a vehicle
+                10 - List ALL dealerships
                 99 - Quit
                 """;
     System.out.println(menu);
@@ -50,8 +57,14 @@ public class UserInterface {
       case 3:
         processGetByYearRequest();
         break;
+      case 4:
+        VehicleDAO.getVehicleByVIN();
+        break;
       case 5:
         processGetByMileageRequest();
+        break;
+      case 6:
+        SalesContractDAO.getAllSalesContracts();
         break;
       case 7:
         VehicleDAO.getAllVehicles();
@@ -62,6 +75,9 @@ public class UserInterface {
         break;
       case 9:
         processRemoveVehicleRequest();
+        break;
+      case 10:
+        DealershipDAO.getAllDealerships();
         break;
       case 99:
         return false;
